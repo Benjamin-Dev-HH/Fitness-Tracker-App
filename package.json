@@ -2,7 +2,7 @@
   "name": "fitness-tracker-app",
   "version": "1.0.0",
   "description": "A fitness tracker app built with React, Django, and Tailwind CSS.",
-  "main": "index.js",
+  "main": "index.ts",
   "scripts": {
     "start": "npm run dev",
     "dev": "vite",

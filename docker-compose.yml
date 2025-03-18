@@ -6,8 +6,6 @@ services:
       context: ./backend
     container_name: fitness-tracker-backend
     command: python manage.py runserver 0.0.0.0:8000
-    volumes:
-      - ./backend:/app
     ports:
       - "8000:8000"
     depends_on:
@@ -15,13 +13,10 @@ services:
 
   frontend:
     build:
-      context: ./frontend/fitness-tracker-frontend
+      context: ./frontend
     container_name: fitness-tracker-frontend
-    volumes:
-      - ./frontend/fitness-tracker-frontend:/app
     ports:
       - "3000:3000"
-    command: npm run dev
 
   db:
     image: mysql:8.0

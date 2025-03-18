@@ -16,7 +16,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from fitness.views import test_api
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api/test/', test_api, name='test_api'), # Ensure this matches the frontend API call
 ]

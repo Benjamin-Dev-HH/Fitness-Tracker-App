@@ -4,8 +4,9 @@
 2. Use `axios` in React components to fetch data from the backend.
 3. Example:
 
-   ```jsx
+   ```typescript
    import axios from "axios";
+   import { useEffect } from "react";
 
    useEffect(() => {
      axios
@@ -25,19 +26,17 @@
 2. Use Google API in React frontend.
 3. Example:
 
-   ```jsx
-   import { GoogleLogin } from "react-google-login";
+   ```typescript
+   import { GoogleLogin } from "@react-oauth/google";
 
-   const responseGoogle = (response) => {
+   const responseGoogle = (response: any) => {
      console.log(response);
    };
 
    <GoogleLogin
      clientId="YOUR_CLIENT_ID"
-     buttonText="Login with Google"
      onSuccess={responseGoogle}
-     onFailure={responseGoogle}
-     cookiePolicy={"single_host_origin"}
+     onError={responseGoogle}
    />;
    ```
 
@@ -52,3 +51,19 @@
 2. Create test users in Django admin panel.
 
 3. Run the frontend and backend servers and test the application.
+
+## Testing Backend Connection
+
+1. Start the backend server:
+
+   ```sh
+   python manage.py runserver
+   ```
+
+2. Start the frontend development server:
+
+   ```sh
+   npm run dev
+   ```
+
+3. Open the app in your browser at `http://localhost:3000`. You should see the message "API is working!" fetched from the backend.
