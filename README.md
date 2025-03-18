@@ -2,7 +2,7 @@
 
 ## Overview
 
-The Fitness Tracker App is a modern application designed to help users track their fitness journey. It integrates with popular APIs like Google Fit and Strava to provide seamless tracking of workouts, nutrition, and overall health metrics. The app is optimized for both desktop and mobile platforms.
+The Fitness Tracker App is a modern application designed to help you track your fitness journey. It integrates with popular APIs like Google Fit and Strava to provide seamless tracking of workouts, nutrition, and overall health metrics. The app will be optimized for both desktop and mobile platforms.
 
 ### Key Features
 
@@ -27,9 +27,6 @@ The Fitness Tracker App is a modern application designed to help users track the
 - **Social Features**: Allow users to share progress and compete with friends.
 - **Push Notifications**: Reminders for workouts and meal logging.
 
-## Development
-
-For setup instructions, refer to the `SETUP.md` file in the project root directory.
 
 ## Deployment
 
