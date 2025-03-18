@@ -1,5 +1,5 @@
-import React from 'react';
-import { GoogleLogin } from 'react-google-login';
+import React from "react";
+import { GoogleLogin } from "react-google-login";
 
 const Login = () => {
   const responseGoogle = (response) => {
@@ -14,7 +14,7 @@ const Login = () => {
         buttonText="Login with Google"
         onSuccess={responseGoogle}
         onFailure={responseGoogle}
-        cookiePolicy={'single_host_origin'}
+        cookiePolicy={"single_host_origin"}
         className="btn-primary"
       />
     </div>
