@@ -1,0 +1,52 @@
+// Global Variables
+$primary-color: #007bff;
+$background-color: #f8f9fa;
+$text-color: #333;
+
+// Reset and Global Styles
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: $background-color;
+  color: $text-color;
+  line-height: 1.6;
+}
+
+// Container
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+// Navbar Styling
+.navbar {
+  background: $primary-color;
+  color: white;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  a {
+    color: white;
+    text-decoration: none;
+    margin-right: 15px;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+// Responsive Styles
+@media (max-width: 768px) {
+  .container {
+    padding: 10px;
+  }
+}
