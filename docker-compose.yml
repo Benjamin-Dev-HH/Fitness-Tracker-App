@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./backend
+    container_name: fitness-tracker-backend
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - ./backend:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+
+  frontend:
+    build:
+      context: ./frontend/fitness-tracker-frontend
+    container_name: fitness-tracker-frontend
+    volumes:
+      - ./frontend/fitness-tracker-frontend:/app
+    ports:
+      - "3000:3000"
+    command: npm run dev
+
+  db:
+    image: mysql:8.0
+    container_name: fitness-tracker-db
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: fitness_tracker
+      MYSQL_USER: fitness_user
+      MYSQL_PASSWORD: fitness_password
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+
+volumes:
+  db_data:
