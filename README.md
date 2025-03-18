@@ -1,110 +1,37 @@
 # Fitness Tracker App
 
-Fitness Tracking | Desktop | Mobile
+## Overview
 
-A Fitness Tracking App that will be designed to work best with Google and API´s/Cloud for personal use.
+The Fitness Tracker App is a modern application designed to help users track their fitness journey. It integrates with popular APIs like Google Fit and Strava to provide seamless tracking of workouts, nutrition, and overall health metrics. The app is optimized for both desktop and mobile platforms.
 
-Python , Django , React, Typescript, Tailwind CSS (ggf. Material UI), React Router, ggf Redux
+### Key Features
 
-OAuth2
+- **User Profile Management**: Create and manage user profiles.
+- **Workout Tracking**: Log and monitor workouts with detailed analytics.
+- **Nutrition Diary**: Track daily meals and calorie intake.
+- **API Integrations**: Google Fit, Strava (Fitbit optional).
+- **OAuth2 Authentication**: Secure login using Google OAuth2.
+- **Responsive Design**: Optimized for desktop and mobile devices.
 
-Google Fit / Strava API (Fitbit optional)
+### Technologies Used
 
-User-Profil, Workout Tracking & Ernährungstagebuch als Kern Features
+- **Frontend**: React, TypeScript, Tailwind CSS (with optional Material UI), React Router, Redux (optional).
+- **Backend**: Python, Django.
+- **APIs**: Google Fit, Strava.
+- **Hosting**: Frontend on Vercel, Backend on Railway.
+- **Containerization**: Docker for development and deployment.
 
-Hosting: Frontend auf Vercel, Backend auf Railway
+### Planned Enhancements
 
-## Frontend Setup
+- **Advanced Analytics**: Provide insights into fitness trends and goals.
+- **Social Features**: Allow users to share progress and compete with friends.
+- **Push Notifications**: Reminders for workouts and meal logging.
 
-1. Navigate to the `frontend` directory:
+## Development
 
-   ```sh
-   cd c:\Users\ben11\Documents\GitHub\Fitness-Tracker-App\frontend
-   ```
+For setup instructions, refer to the `SETUP.md` file in the project root directory.
 
-2. Initialize a new Vite project:
+## Deployment
 
-   ```sh
-   npm create vite@latest
-   cd fitness-tracker-frontend
-   npm install
-   ```
-
-3. Install necessary dependencies:
-
-   ```sh
-   npm install -D tailwindcss postcss autoprefixer
-   npx tailwindcss init -p
-   npm install react-router-dom axios
-   ```
-
-4. Set up Tailwind CSS:
-   Update `tailwind.config.js`:
-
-   ```javascript
-   module.exports = {
-     content: ["./index.html", "./src/**/*.{js,jsx,ts,tsx}"],
-     theme: {
-       extend: {
-         colors: {
-           "marine-blue": "#1E3A8A",
-         },
-       },
-     },
-     plugins: [],
-   };
-   ```
-
-5. Create the project structure and components as described above.
-
-6. To run the frontend:
-   ```sh
-   npm run dev
-   ```
-
-## Backend Integration
-
-1. Set up API endpoints in Django.
-2. Use `axios` in React components to fetch data from the backend.
-
-## Google OAuth2 Login
-
-1. Configure Google OAuth2 in Django backend.
-2. Use Google API in React frontend.
-
-## Testing
-
-1. Create an admin user in Django:
-
-   ```sh
-   python manage.py createsuperuser
-   ```
-
-2. Create test users in Django admin panel.
-
-3. Run the frontend and backend servers and test the application.
-
-## Docker Setup
-
-1. Build and start the services:
-
-   ```sh
-   docker-compose up --build
-   ```
-
-2. Access the services:
-
-   - Frontend: [http://localhost:3000](http://localhost:3000)
-   - Backend: [http://localhost:8000](http://localhost:8000)
-   - MySQL: `localhost:3306`
-
-3. To stop the services:
-
-   ```sh
-   docker-compose down
-   ```
-
-4. To clean up volumes:
-   ```sh
-   docker-compose down -v
-   ```
+- **Frontend**: Hosted on [Vercel](https://vercel.com).
+- **Backend**: Hosted on [Railway](https://railway.app).
