@@ -2,7 +2,7 @@ python3 -m venv venv
 source venv/bin/activate
 
 #Abhängigkeiten installieren
-pip install django djangorestframework django-oauth-toolkit mysqlclient django-environ google-auth google-auth-oauthlib google-auth-httplib2 requests
+pip install django djangorestframework django-oauth-toolkit mysqlclient django-environ google-auth google-auth-oauthlib google-auth-httplib2 requests django-cors-headers
 
 # Django Projekt erstellen
 django-admin startproject backend
