@@ -2,13 +2,20 @@ import { Link } from 'react-router-dom';
 
 function Navbar() {
   return (
-    <nav className="bg-blue-500 p-4 text-white">
-      <ul className="flex space-x-4">
-        <li><Link to="/">Home</Link></li>
-        <li><Link to="/login">Login</Link></li>
+    <nav className="bg-blue-600 p-4">
+      <ul className="flex space-x-4 text-white">
+        <li>
+          <Link to="/" className="hover:underline">
+            Home
+          </Link>
+        </li>
+        <li>
+          <Link to="/login" className="hover:underline">
+            Login
+          </Link>
+        </li>
       </ul>
     </nav>
   );
 }
-
 export default Navbar;
