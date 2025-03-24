@@ -1,12 +1,10 @@
-version: '3.8'
-
 services:
   backend:
     build:
       context: ./backend
-    env_file:
-      - .env  # Load environment variables from .env
     container_name: fitness-tracker-backend
+    env_file:
+      - .env
     command: python manage.py runserver 0.0.0.0:8000
     ports:
       - "8000:8000"
@@ -14,24 +12,29 @@ services:
       - db
     environment:
       - DJANGO_SETTINGS_MODULE=fitness_tracker.settings
+      - MYSQL_USER=${MYSQL_USER}  
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}  
+      - MYSQL_HOST=${MYSQL_HOST}  
+      - MYSQL_PORT=${MYSQL_PORT}  
+      - MYSQL_NAME=${MYSQL_NAME}  
 
   frontend:
     build:
       context: ./frontend
     container_name: fitness-tracker-frontend
     ports:
-      - "3000:3000"
+      - "3000:80"  
 
   db:
     image: mysql:8.0
     container_name: fitness-tracker-db
     environment:
-      MYSQL_ROOT_PASSWORD: rootpassword
-      MYSQL_DATABASE: fitness_tracker
-      MYSQL_USER: fitness_user
-      MYSQL_PASSWORD: fitness_password
+      MYSQL_ROOT_PASSWORD: ${MYSQL_PASSWORD} 
+      MYSQL_DATABASE: ${MYSQL_NAME} 
+      MYSQL_USER: ${MYSQL_USER}  
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
     ports:
-      - "3306:3306"
+      - "3307:3306"
     volumes:
       - db_data:/var/lib/mysql
 

@@ -1,6 +1,13 @@
 {
   "compilerOptions": {
-    "jsx": "react-jsx"
+    "moduleResolution": "node",
+    "paths": {
+      "@babel/*": ["node_modules/@babel/*"]
+    },
+    "baseUrl": ".",
+    "target": "ESNext", // Or at least "ES2015"
+    "lib": ["ESNext", "DOM"], 
+    "module": "ESNext"
   },
   "files": [],
   "references": [
