@@ -4,12 +4,16 @@ services:
   backend:
     build:
       context: ./backend
+    env_file:
+      - .env  # Load environment variables from .env
     container_name: fitness-tracker-backend
     command: python manage.py runserver 0.0.0.0:8000
     ports:
       - "8000:8000"
     depends_on:
       - db
+    environment:
+      - DJANGO_SETTINGS_MODULE=fitness_tracker.settings
 
   frontend:
     build:
