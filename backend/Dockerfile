@@ -4,7 +4,7 @@ FROM python:3.11
 WORKDIR /fitness_tracker
 
 # Copy requirements and install dependencies
-COPY requirements.txt /fitness_tracker/
+COPY /fitness_tracker/requirements.txt /fitness_tracker/
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy the entire backend directory

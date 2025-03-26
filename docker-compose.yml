@@ -1,3 +1,4 @@
+
 services:
   backend:
     build:
@@ -6,7 +7,7 @@ services:
     working_dir: /fitness_tracker
     env_file:
       - .env
-    command: python fitness_tracker/manage.py runserver 0.0.0.0:8000
+    command: ./wait-for-it.sh db 3306 python manage.py runserver 0.0.0.0:8000
     ports:
       - "8000:8000"
     depends_on:
@@ -27,17 +28,16 @@ services:
       - "3000:80"  
 
   db:
-    image: mysql:8.0
-    container_name: fitness-tracker-db
+    image: mysql:latest
+    container_name: mysql-container
+    restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: ${MYSQL_PASSWORD} 
-      MYSQL_DATABASE: ${MYSQL_NAME} 
-      MYSQL_USER: ${MYSQL_USER}  
-      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
     ports:
       - "3307:3306"
     volumes:
-      - db_data:/var/lib/mysql
+      - mysql_data:/var/lib/mysql
 
 volumes:
-  db_data:
+  mysql_data:
