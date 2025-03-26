@@ -43,5 +43,19 @@ services:
     working_dir: /backend/fitness_tracker
     command: ["python", "manage.py", "runserver", "0.0.0.0:8000"]
 
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend:/app
+    environment:
+      - NODE_ENV=development
+    depends_on:
+      - backend
+
 volumes:
   mysql_data:
+  frontend-data:

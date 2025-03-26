@@ -13,6 +13,9 @@ RUN npm install
 # Kopiere den gesamten Code ins Container-Verzeichnis
 COPY . .
 
+# Exponiere Port 3000 (für Entwicklungsmodus)
+EXPOSE 3000
+
 # Baue die Anwendung für die Produktion
 RUN npm run build
 
