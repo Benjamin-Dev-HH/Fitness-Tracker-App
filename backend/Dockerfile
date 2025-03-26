@@ -1,17 +1,18 @@
+# Use official Python image
 FROM python:3.11
 
-# Set the working directory
-WORKDIR /fitness_tracker
+# Set working directory inside container
+WORKDIR /backend
 
-# Copy requirements and install dependencies
-COPY /fitness_tracker/requirements.txt /fitness_tracker/
-RUN pip install --no-cache-dir -r requirements.txt
+# Copy all files to container
+COPY . .
 
-# Copy the entire backend directory
-COPY . /fitness_tracker
+# Install dependencies
+RUN pip install --upgrade pip && pip install -r requirements.txt
 
-# Expose the Django development server port
+# Expose port 8000
 EXPOSE 8000
 
-# Set the default command to run the Django development server
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+# Ensure database migrations run before server starts
+CMD ["python", "fitness_tracker/manage.py", "migrate"] && \
+    ["python", "fitness_tracker/manage.py", "runserver", "0.0.0.0:8000"]

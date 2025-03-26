@@ -1,43 +1,47 @@
-
 services:
-  backend:
-    build:
-      context: ./backend
-    container_name: fitness-tracker-backend
-    working_dir: /backend
+  mysql:
+    container_name: LocalMySQL80
+    image: mysql:latest
+    restart: always
     env_file:
       - .env
-    command:  [ "db:3306", "--", "python", "fitness_tracker/manage.py", "runserver", "0.0.0.0:8000"]
-    ports:
-      - "8000:8000"
-    depends_on:
-      - db
-    environment:
-      - DJANGO_SETTINGS_MODULE=fitness_tracker.settings
-      - MYSQL_USER=${MYSQL_USER}  
-      - MYSQL_PASSWORD=${MYSQL_PASSWORD}  
-      - MYSQL_HOST=${MYSQL_HOST}  
-      - MYSQL_PORT=${MYSQL_PORT}  
-      - MYSQL_NAME=${MYSQL_NAME}  
-
-  frontend:
-    build:
-      context: ./frontend
-    container_name: fitness-tracker-frontend
-    ports:
-      - "3000:80"  
-
-  db:
-    image: mysql:latest
-    container_name: mysql-container
-    restart: always
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_DATABASE: fitness_tracker_db
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
     ports:
-      - "3307:3306"
+      - "3306:3306"
     volumes:
       - mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      retries: 5
+      start_period: 20s
+      timeout: 5s
+
+  backend:
+    build: ./backend
+    container_name: fitness-tracker-backend
+    restart: always
+    depends_on:
+      mysql:
+        condition: service_healthy
+    env_file:
+      - .env
+    environment:
+      DB_HOST: LocalMySQL80
+      DB_PORT: 3306
+      DB_USER: devuser
+      DB_PASSWORD: devpass
+      DB_NAME: fitness_tracker_db
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend:/backend
+    working_dir: /backend/fitness_tracker
+    command: ["python", "manage.py", "runserver", "0.0.0.0:8000"]
 
 volumes:
   mysql_data:

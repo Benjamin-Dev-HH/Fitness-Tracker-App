@@ -88,11 +88,11 @@ WSGI_APPLICATION = 'fitness_tracker.wsgi.application'
 DATABASES = {
    'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.getenv('MYSQL_NAME'),
-        'USER': os.getenv('MYSQL_USER'),
+        'NAME': 'fitness_tracker_db',
+        'USER': 'devuser',
         'PASSWORD': os.getenv('MYSQL_PASSWORD'),
-        'HOST': os.getenv('MYSQL_HOST', 'localhost'),
-        'PORT': os.getenv('MYSQL_PORT', '3306'),
+        'HOST': 'LocalMySQL80',
+        'PORT': '3306',
     }
 }
 
