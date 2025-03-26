@@ -4,10 +4,10 @@ services:
     build:
       context: ./backend
     container_name: fitness-tracker-backend
-    working_dir: /fitness_tracker
+    working_dir: /backend
     env_file:
       - .env
-    command: ./wait-for-it.sh db 3306 python manage.py runserver 0.0.0.0:8000
+    command:  [ "db:3306", "--", "python", "fitness_tracker/manage.py", "runserver", "0.0.0.0:8000"]
     ports:
       - "8000:8000"
     depends_on:
